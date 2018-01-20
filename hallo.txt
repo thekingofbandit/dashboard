@@ -1,0 +1,77 @@
+hallo
+this is my example editing text in git
+do you see me?
+if not 
+
+https://help.github.com/articles/duplicating-a-repository/
+
+Mirroring a repository in another location
+If you want to mirror a repository in another location, including getting updates from the original, you can clone a mirror and periodically push the changes.
+
+Open Git Bash.
+
+Create a bare mirrored clone of the repository.
+
+git clone --mirror https://github.com/exampleuser/repository-to-mirror.git
+Set the push location to your mirror.
+
+cd repository-to-mirror.git
+git remote set-url --push origin https://github.com/exampleuser/mirrored
+As with a bare clone, a mirrored clone includes all remote branches and tags, but all local references will be overwritten each time you fetch, so it will always be the same as the original repository. Setting the URL for pushes simplifies pushing to your mirror. To update your mirror, fetch updates and push.
+
+git fetch -p origin
+git push --mirror
+ Contact a human
+Article versions
+GitHub.com
+GitHub Enterprise 2.12
+GitHub Enterprise 2.11
+GitHub Enterprise 2.10
+GitHub Enterprise 2.9
+
+
+
+-------------------------
+
+Mirroring a repository that contains Git Large File Storage objects
+Open Git Bash.
+
+Create a bare clone of the repository. Replace the example username with the name of the person or organization who owns the repository, and replace the example repository name with the name of the repository you'd like to duplicate.
+
+git clone --bare https://github.com/exampleuser/old-repository.git
+Navigate to the repository you just cloned.
+
+cd old-repository.git
+Pull in the repository's Git Large File Storage objects.
+
+git lfs fetch --all
+Mirror-push to the new repository.
+
+git push --mirror https://github.com/exampleuser/new-repository.git
+Push the repository's Git Large File Storage objects to your mirror.
+
+git lfs push --all https://github.com/exampleuser/new-repository.git
+Remove the temporary local repository you created in step 1.
+
+cd ..
+rm -rf old-repository.git
+
+
+
+
+-----------------------
+
+Mirroring a repository
+Open Git Bash.
+
+Create a bare clone of the repository.
+
+git clone --bare https://github.com/exampleuser/old-repository.git
+Mirror-push to the new repository.
+
+cd old-repository.git
+git push --mirror https://github.com/exampleuser/new-repository.git
+Remove the temporary local repository you created in step 1.
+
+cd ..
+rm -rf old-repository.git
